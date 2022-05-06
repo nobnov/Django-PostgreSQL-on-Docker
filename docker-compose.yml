@@ -3,6 +3,15 @@ version: '3'
 services:
   database:
     image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data #永続化
+    container_name: test_django_postgres
   website:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -12,3 +21,5 @@ services:
       - "8000:8000"
     depends_on:
       - database
+volumes:
+  db-data:
