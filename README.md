@@ -4,7 +4,7 @@
     $ docker-compose build
 
 ### 2.Djangoプロジェクトを作成
-    $ docker-compose run website django-admin startproject djangoproject .
+    $ docker-compose run --rm website django-admin startproject djangoproject .
 
 以下が生成されます。
 プロジェクトディレクトリ
@@ -20,6 +20,7 @@ settings.py
 	        'ENGINE': 'django.db.backends.postgresql',
 	        'NAME': 'postgres',
 	        'USER': 'postgres',
+            'PASSWORD': 'postgres',
 	        'HOST': 'database',
 	        'PORT': 5432,
 	    }
@@ -27,8 +28,8 @@ settings.py
 	
 ### 4.マイグレーション
 
-    docker-compose run website python manage.py makemigrations
-    docker-compose run website python manage.py migrate
+    docker-compose run --rm website python manage.py makemigrations
+    docker-compose run --rm website python manage.py migrate
 
 ### 5.起動
 
