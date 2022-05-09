@@ -15,6 +15,10 @@
 ### 3.DB設定
 settings.py
 
+    ALLOWED_HOSTS = ["*"]
+
+    ...
+
 	DATABASES = {
 	    'default': {
 	        'ENGINE': 'django.db.backends.postgresql',
